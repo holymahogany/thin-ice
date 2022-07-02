@@ -1,0 +1,12 @@
+sfx:
+boost 1
+boost 2
+boost 3
+boost 4
+splash
+ice crumble (when player passes over cracked ice and it goes away)
+talking fish
+intro lightning
+carrot pick-up
+carrot get
+ending jingle
