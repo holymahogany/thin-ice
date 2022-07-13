@@ -54,7 +54,7 @@ function player.boost(self, x_dir, y_dir, super_boost)
     self.t_since_boost = 0
     self.prev_boost.ucx, self.prev_boost.ucy = ucx, ucy
 
-    --sfx()
+    sfx(self.boost_count == 4 and 60 or 63, 3)
 end
 
 -- these are calculated twice, before and after movement is applied
@@ -226,6 +226,7 @@ function player.update(self)
                 new_hole_in_ice:dunk_player(self)
                 self.x = new_hole_in_ice.x + 4
                 self.y = new_hole_in_ice.y + 6
+                sfx(58, 3)
                 return
             end
             self.t_motionless_on_ice += 1
@@ -313,6 +314,7 @@ function player.update(self)
             new_hole.dont_draw = true
             self.x, self.y = new_hole.x + 4, new_hole.y + 6
             add(non_map_holes, new_hole)
+            sfx(58, 3)
             return
         end
 	end
@@ -322,6 +324,7 @@ function player.update(self)
         self.x = level_ox + 2 
     elseif self.x > level_ox + 126 and level_index < 19 then
 		self.state = 100
+        --if level_index == 2 then music(-1) end
     end
     -- special camera code for last level
     if level_index == 19 then
@@ -334,12 +337,18 @@ function player.update(self)
                 camera_x = approach(camera_x, 128, 3)
             end
         end
-        if camera_x >= 128 then lock_camera = true end
+        if camera_x >= 128 and not lock_camera then 
+            lock_camera = true 
+        end
         if self.x < 130 and lock_camera then self.x = 130 end
         if self.x > 254 then self.x = 254 end
     end
 
-    if self.x > 176 and self.x < 200 and self.y < 488 and self.y > 480 and not game_finished then game_finished = true end
+    if self.x > 176 and self.x < 200 and self.y < 488 and self.y > 480 and not game_finished then 
+        game_finished = true 
+        music(24)
+    end
+    if game_finished and stat(46) == -1 then music(2) end
 
     if self.y < level_oy + 4 then
         self.y = level_oy + 4

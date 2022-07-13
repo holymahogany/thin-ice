@@ -9,6 +9,7 @@ function _init()
     titlescreen_timer = 0
     game_finished = false
     game_finished_timer = 0
+    current_music = 0
     frames = 0
     seconds = 0
     minutes = 0
@@ -37,7 +38,8 @@ function _init()
     end
     add(carrots, { x=126, y=23 })
 
-    goto_level(5)
+    music(0)
+    goto_level(1)
 end
 
 function _update()
@@ -50,6 +52,7 @@ function _update()
             for i=100,107 do for j=52,53 do mset(i,j,4) end end
             mset(103,57,36) mset(104,57,36) mset(103,58,113) mset(104,58,113)
         end
+        if titlescreen_timer > 9 and titlescreen_timer < 38 and stat(49) == -1 then sfx(57,3) end
     elseif titlescreen_state == 2 or level_index > 1 then
         if not game_finished then
             frames += 1
@@ -188,7 +191,7 @@ function _draw()
             circ(831, 459, titlescreen_timer % 6 < 3 and 7 or 13, 0)
             circ(831, 459, 10, 0)
             local rx, ry = flr(rnd(2))-1, flr(rnd(2))-1
-            spr((titlescreen_timer - 10) % 6 < 3 and 96 or 97, 828+rx, 456+ry) 
+            spr((titlescreen_timer - 10) % 6 < 3 and 96 or 97, 828+rx, 456+ry)
         end
         if titlescreen_timer > 36 then fillp(0B1010010110100101.1) rectfill(camera_x, camera_y, camera_x+128, camera_y+128, 0) fillp() end
         if titlescreen_timer > 40 then rectfill(camera_x, camera_y, camera_x+128, camera_y+128, 0) end

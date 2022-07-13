@@ -74,6 +74,7 @@ function carrot.update(self)
         self.t += 1
         self.y -= self.t % 5 == 0 and 1 or 0
         self.destroyed = self.t > 32
+        if self.t == 22 then sfx(55) end
     elseif self.player then
 		self.x += (self.player.x - self.x) / 8
 		self.y += (self.player.y - 4 - self.y) / 8
@@ -97,6 +98,7 @@ function carrot.collect(self, player)
 		self.flash = 6
         self.y = self.y + sin(time()) * 2
 		self.ground = 0
+        sfx(56)
 	end
 end
 function carrot.draw(self)

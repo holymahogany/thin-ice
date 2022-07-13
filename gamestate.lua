@@ -4,7 +4,12 @@ function goto_level(index)
     title_card = 70
 
     -- start music
-    -- music()
+    --[[local level_music = level_index > 2 and 3 or 0
+    if current_music != level_music and level_music then
+		current_music = level_music
+		music(level_music)
+	end]]
+    if level_index == 3 then music(2) end
 
     restart_level()
 end

@@ -1,12 +1,22 @@
+music:
+I loooove the music. I think you did a great job. I'm excited to see what it sounds like when you add more patterns!
+
 sfx:
-boost 1
-boost 2
-boost 3
-boost 4
-splash
-ice crumble (when player passes over cracked ice and it goes away)
-talking fish
-intro lightning
-carrot pick-up
-carrot get
-ending jingle
+SFX 63 - skate 1 (yellow) 
+SFX 62 - skate 2 (orange)
+SFX 61 - skate 3 (red)
+SFX 60 - boost (when you press x)
+I liked the progression for 63 to 61, but found when I implemented them that hearing this progression over and over, as the player skated around, was a little much. I tried just using 63 for all skate movements and 60 for the boost and liked it a little better. Maybe we can keep the progression if we dampen it a bit? Or maybe we really need only one skate sound. Also, the boost sound is perfect.
+
+SFX 59 - splash
+This one is legible to me as a splash sound, but feels off in the game. I'm not sure if this is the right suggestion to make, but maybe it would help if the splash sfx was a few notes longer? 
+
+SFX 58 - ice breaking
+This one sounds great in isolation, but didn't work for me in the game. I found that playing just the splash sfx when the player falls through the ice works better. It also didn't work for when the player skates over the cracked ice and the cracked ice crumbles away, mostly because these cracked ice tiles tend to be grouped together, and hearing this sfx play several times in a row sounded off.
+
+SFX 57 - lighting 
+This one's great. The way that I implemented it is to loop it a few times, starting when the lightning strikes the player.
+
+SFX 56 - carrot pick-up
+SFX 55 - carrot get
+These are both perfect, no notes. 
